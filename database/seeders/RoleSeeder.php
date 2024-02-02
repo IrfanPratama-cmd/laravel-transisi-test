@@ -13,18 +13,19 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+        $role_superadmin = Role::create(['name' => 'super admin' , 'guard_name' => 'web']);
         $role_admin = Role::create(['name' => 'admin' , 'guard_name' => 'web']);
-        $role_user = Role::create(['name' => 'user' , 'guard_name' => 'web']);
 
-        $role_admin->givePermissionTo(['read-master-data', 'read-user-management', 'read-dashboard']);
-        $role_admin->givePermissionTo(['read-role','create-role', 'update-role', 'delete-role']);
-        $role_admin->givePermissionTo(['read-permission','create-permission', 'update-permission', 'delete-permission']);
-        $role_admin->givePermissionTo(['read-user','create-user', 'update-user', 'delete-user']);
-        $role_admin->givePermissionTo(['read-brand','create-brand', 'update-brand', 'delete-brand']);
-        $role_admin->givePermissionTo(['read-category','create-category', 'update-category', 'delete-category']);
-        $role_admin->givePermissionTo(['read-product','create-product', 'update-product', 'delete-product']);
+        $role_superadmin->givePermissionTo(['read-master-data', 'read-user-management', 'read-dashboard']);
+        $role_superadmin->givePermissionTo(['read-role','create-role', 'update-role', 'delete-role']);
+        $role_superadmin->givePermissionTo(['read-permission','create-permission', 'update-permission', 'delete-permission']);
+        $role_superadmin->givePermissionTo(['read-user','create-user', 'update-user', 'delete-user']);
+        $role_superadmin->givePermissionTo(['read-division','create-division', 'update-division', 'delete-division']);
+        $role_superadmin->givePermissionTo(['read-position','create-position', 'update-position', 'delete-position']);
+        $role_superadmin->givePermissionTo(['read-company','create-company', 'update-company', 'delete-company']);
+        $role_superadmin->givePermissionTo(['read-employee','create-employee', 'update-employee', 'delete-employee']);
 
-        $role_user->givePermissionTo('read-dashboard');
+        $role_admin->givePermissionTo('read-dashboard');
 
     }
 }

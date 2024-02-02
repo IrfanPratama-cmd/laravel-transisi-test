@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class ProductAsset extends Model
+class Company extends Model
 {
     use HasFactory;
 
-    protected $table = "product_asset";
+    protected $table = "companies";
 
-    protected $fillable = ['id', 'product_id', 'file_name', 'file_url'];
+    protected $fillable = ['id', 'company_name', 'email', 'website', 'phone_number', 'address'];
 
     protected $primaryKey = 'id';
 
@@ -30,7 +30,19 @@ class ProductAsset extends Model
         });
     }
 
-    public function product(){
-        return $this->belongsTo(Product::class);
+    public function employee(){
+        return $this->hasMany(Employee::class);
+    }
+
+    public function asset(){
+        return $this->hasMany(CompanyAsset::class);
+    }
+
+    public function division(){
+        return $this->hasMany(Employee::class);
+    }
+
+    public function position(){
+        return $this->hasMany(Employee::class);
     }
 }

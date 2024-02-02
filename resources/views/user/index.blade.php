@@ -116,7 +116,7 @@
         $('body').on('click', '.editGroup', function () {
             var id = $(this).data('id');
             console.log(id);
-            $.get("roles" +'/' + id , function (data) {
+            $.get("users" +'/' + id , function (data) {
                 $('#modelHeading').html("Edit Group");
                 $('#savedata').val("edit-group");
                 $('#ajaxModelexa').modal('show');

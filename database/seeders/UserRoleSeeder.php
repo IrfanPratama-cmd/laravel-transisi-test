@@ -23,31 +23,22 @@ class UserRoleSeeder extends Seeder
             'remember_token' => Str::random(10)
         ];
 
-        $role_user = Role::where('name', "user")->first();
         $role_admin = Role::where('name', "admin")->first();
+        $role_superadmin = Role::where('name', "super admin")->first();
 
         $admin = User::create(array_merge([
-            'email' => 'admin@gmail.com',
-            'name' => 'admin',
-            'role_id' => $role_admin->id,
+            'email' => 'admin@transisi.id',
+            'name' => 'Admin Transisi',
+            'role_id' => $role_superadmin->id,
         ], $default_user_value));
 
         $user = User::create(array_merge([
-            'email' => 'user@gmail.com',
-            'name' => 'user',
-            'role_id' => $role_user->id,
+            'email' => 'admin-yogyakarta@transisi.id',
+            'name' => 'Admin Transisi Yogyakarta',
+            'role_id' => $role_admin->id,
         ], $default_user_value));
 
-        $admin->assignRole($role_admin->name);
-        $user->assignRole($role_user->name);
-
-        UserProfile::create([
-            'user_id' => $admin->id
-        ]);
-
-        UserProfile::create([
-            'user_id' => $user->id
-        ]);
-
+        $admin->assignRole($role_superadmin->name);
+        $user->assignRole($role_admin->name);
     }
 }

@@ -1,8 +1,8 @@
 @extends('data-table.main')
 
 @section('table')
-    @can('create-category')
-    <a class="btn btn-primary" href="javascript:void(0)" id="createCategory"> Add New Category</a>
+    @can('create-division')
+    <a class="btn btn-primary" href="javascript:void(0)" id="createDivision"> Add New Division</a>
     @endauth
 
     <div class="row py-3">
@@ -14,8 +14,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Category Code</th>
-                                <th>Category Name</th>
+                                <th>Company Name</th>
+                                <th>Division Name</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>
@@ -36,22 +36,27 @@
                 <div class="modal-body">
                     <form id="postForm" name="postForm" class="form-horizontal">
                        <input type="hidden" name="id" id="id">
-                        <div class="form-group">
-                            <label for="category_code" class="col-sm-6 control-label">Category Code</label>
+                       <div class="form-group">
+                        <label for="company" class="col-sm-6 control-label">Company</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="category_code" name="category_code" placeholder="Enter Category Name" value="" required>
+                                <select class="form-select" name="company_id" id="company_id">
+                                    <option selected disabled>Select Company</option>
+                                        @foreach ($company as $c)
+                                            <option value="{{ $c->id }}">{{ $c->company_name }}</option>
+                                        @endforeach
+                                </select>
                             </div>
-                        </div>
+                         </div>
 
                         <div class="form-group">
-                            <label for="category_name" class="col-sm-6 control-label">Category Name</label>
+                            <label for="division_name" class="col-sm-6 control-label">Division Name</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Category Name" value="" required>
+                                <input type="text" class="form-control" id="division_name" name="division_name" placeholder="Enter Division Name" value="" required>
                             </div>
                         </div>
 
                         <div class="col-sm-offset-2 col-sm-10">
-                         <button type="submit" class="btn btn-primary" id="savedata" value="create">Save Category
+                         <button type="submit" class="btn btn-primary" id="savedata" value="create">Save Division
                          </button>
                         </div>
                     </form>
@@ -74,33 +79,33 @@
       var table = $('.data-table').DataTable({
           processing: true,
           serverSide: true,
-          ajax: "/categories",
+          ajax: "/divisions",
           columns: [
               {data: 'no', name: 'no'},
-              {data: 'category_code', name: 'category_code'},
-              {data: 'category_name', name: 'category_name'},
+              {data: 'company.company_name', name: 'company.company_name'},
+              {data: 'division_name', name: 'division_name'},
               {data: 'action', name: 'action', orderable: false, searchable: false},
           ]
       });
 
-        $('#createCategory').click(function () {
-            $('#savedata').val("create-category");
+        $('#createDivision').click(function () {
+            $('#savedata').val("create-division");
             $('#id').val('');
             $('#postForm').trigger("reset");
-            $('#modelHeading').html("Create New category");
+            $('#modelHeading').html("Create New Division");
             $('#ajaxModelexa').modal('show');
         });
 
-        $('body').on('click', '.editCategory', function () {
+        $('body').on('click', '.editDivision', function () {
             var id = $(this).data('id');
             console.log(id);
-            $.get("categories" +'/' + id , function (data) {
-                $('#modelHeading').html("Edit Category");
-                $('#savedata').val("edit-category");
+            $.get("divisions" +'/' + id , function (data) {
+                $('#modelHeading').html("Edit Division");
+                $('#savedata').val("edit-division");
                 $('#ajaxModelexa').modal('show');
                 $('#id').val(data.id);
-                $('#category_code').val(data.category_code);
-                $('#category_name').val(data.category_name);
+                $('#company_id').val(data.company_id);
+                $('#division_name').val(data.division_name);
             })
         });
 
@@ -110,7 +115,7 @@
 
             $.ajax({
             data: $('#postForm').serialize(),
-            url: "/categories",
+            url: "/divisions",
             type: "POST",
             dataType: 'json',
             success: function (data) {
@@ -120,7 +125,7 @@
                 table.draw();
                 Swal.fire({
                     icon: 'success',
-                    title: 'category created successfully!',
+                    title: 'Division saved successfully!',
                 });
             },
             error: function (data) {
@@ -135,7 +140,7 @@
         });
         });
 
-        $('body').on('click', '.deleteCategory', function () {
+        $('body').on('click', '.deleteDivision', function () {
             var id = $(this).data("id");
 
             Swal.fire({
@@ -150,7 +155,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/categories/${id}`,
+                        url: `/divisions/${id}`,
                         success: function (data) {
                             if(data.response){
                                 Swal.fire('Deleted!', data.response, 'success');

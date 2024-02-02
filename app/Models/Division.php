@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Division extends Model
 {
     use HasFactory;
 
-    protected $table = "category";
+    protected $table = "divisions";
 
-    protected $fillable = ['id', 'category_code', 'category_name'];
+    protected $fillable = ['id', 'company_id', 'division_name'];
 
     protected $primaryKey = 'id';
 
@@ -30,7 +30,12 @@ class Category extends Model
         });
     }
 
-    public function product(){
-        return $this->hasMany(Product::class);
+    public function employee(){
+        return $this->hasMany(Employee::class);
     }
+
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+
 }

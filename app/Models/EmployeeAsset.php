@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class UserProfile extends Model
+class EmployeeAsset extends Model
 {
     use HasFactory;
 
-    protected $table = "user_profile";
+    protected $table = "employee_assets";
 
-    protected $fillable = ['id', 'user_id', 'full_name', 'phone_number', 'address', 'profile_asset'];
+    protected $fillable = ['id', 'employee_id', 'file_name', 'url'];
 
     protected $primaryKey = 'id';
 
@@ -30,7 +30,7 @@ class UserProfile extends Model
         });
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function company(){
+        return $this->belongsTo(Company::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -59,10 +60,6 @@ class UserController extends Controller
               'user_id' => $user->id,
               'token' => $token
             ]);
-
-        UserProfile::create([
-            'user_id' => $user->id,
-        ]);
 
         DB::table('password_resets')->insert([
             'email' => $request->email,

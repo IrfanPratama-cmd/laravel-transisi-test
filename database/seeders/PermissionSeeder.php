@@ -18,15 +18,36 @@ class PermissionSeeder extends Seeder
         $role = Modul::create(['name' => 'role']);
         $user = Modul::create(['name' => 'user']);
         $permission = Modul::create(['name' => 'permission']);
-        $brand = Modul::create(['name' => 'brand']);
-        $category = Modul::create(['name' => 'category']);
-        $product = Modul::create(['name' => 'product']);
         $master = Modul::create(['name' => 'master']);
+        $division = Modul::create(['name' => 'division']);
+        $position = Modul::create(['name' => 'position']);
+        $employee = Modul::create(['name' => 'employee']);
+        $company = Modul::create(['name' => 'company']);
 
         $read_role = Permission::create(['name' => 'read-role' , 'modul_id' => $role->id, 'guard_name' => 'web']);
         $create_role = Permission::create(['name' => 'create-role' , 'modul_id' => $role->id, 'guard_name' => 'web']);
         $update_role = Permission::create(['name' => 'update-role' , 'modul_id' => $role->id,'guard_name' => 'web']);
         $delete_role = Permission::create(['name' => 'delete-role' , 'modul_id' => $role->id, 'guard_name' => 'web']);
+
+        $read_division = Permission::create(['name' => 'read-division' , 'modul_id' => $division->id, 'guard_name' => 'web']);
+        $create_division = Permission::create(['name' => 'create-division' , 'modul_id' => $division->id, 'guard_name' => 'web']);
+        $update_division = Permission::create(['name' => 'update-division' , 'modul_id' => $division->id,'guard_name' => 'web']);
+        $delete_division = Permission::create(['name' => 'delete-division' , 'modul_id' => $division->id, 'guard_name' => 'web']);
+
+        $read_company = Permission::create(['name' => 'read-company' , 'modul_id' => $company->id, 'guard_name' => 'web']);
+        $create_company = Permission::create(['name' => 'create-company' , 'modul_id' => $company->id, 'guard_name' => 'web']);
+        $update_company = Permission::create(['name' => 'update-company' , 'modul_id' => $company->id,'guard_name' => 'web']);
+        $delete_company = Permission::create(['name' => 'delete-company' , 'modul_id' => $company->id, 'guard_name' => 'web']);
+
+        $read_position = Permission::create(['name' => 'read-position' , 'modul_id' => $position->id, 'guard_name' => 'web']);
+        $create_position = Permission::create(['name' => 'create-position' , 'modul_id' => $position->id, 'guard_name' => 'web']);
+        $update_position = Permission::create(['name' => 'update-position' , 'modul_id' => $position->id,'guard_name' => 'web']);
+        $delete_position = Permission::create(['name' => 'delete-position' , 'modul_id' => $position->id, 'guard_name' => 'web']);
+
+        $read_employee = Permission::create(['name' => 'read-employee' , 'modul_id' => $employee->id, 'guard_name' => 'web']);
+        $create_employee = Permission::create(['name' => 'create-employee' , 'modul_id' => $employee->id, 'guard_name' => 'web']);
+        $update_employee = Permission::create(['name' => 'update-employee' , 'modul_id' => $employee->id,'guard_name' => 'web']);
+        $delete_employee = Permission::create(['name' => 'delete-employee' , 'modul_id' => $employee->id, 'guard_name' => 'web']);
 
         $user_management = Permission::create(['name' => 'read-user-management' , 'modul_id' => $master->id,'guard_name' => 'web']);
         $master_data = Permission::create(['name' => 'read-master-data' , 'modul_id' => $master->id, 'guard_name' => 'web']);
@@ -41,50 +62,5 @@ class PermissionSeeder extends Seeder
         $create_user = Permission::create(['name' => 'create-user' ,'modul_id' => $user->id, 'guard_name' => 'web']);
         $update_user = Permission::create(['name' => 'update-user' ,'modul_id' => $user->id,'guard_name' => 'web']);
         $delete_user = Permission::create(['name' => 'delete-user' ,'modul_id' => $user->id,'guard_name' => 'web']);
-
-        $read_brand = Permission::create(['name' => 'read-brand' ,'modul_id' => $brand->id, 'guard_name' => 'web']);
-        $create_brand = Permission::create(['name' => 'create-brand' ,'modul_id' => $brand->id, 'guard_name' => 'web']);
-        $update_brand = Permission::create(['name' => 'update-brand' ,'modul_id' => $brand->id, 'guard_name' => 'web']);
-        $delete_brand = Permission::create(['name' => 'delete-brand' ,'modul_id' => $brand->id, 'guard_name' => 'web']);
-
-        $read_category = Permission::create(['name' => 'read-category' ,'modul_id' => $category->id, 'guard_name' => 'web']);
-        $create_category = Permission::create(['name' => 'create-category' ,'modul_id' => $category->id, 'guard_name' => 'web']);
-        $update_category = Permission::create(['name' => 'update-category' ,'modul_id' => $category->id, 'guard_name' => 'web']);
-        $delete_category = Permission::create(['name' => 'delete-category' ,'modul_id' => $category->id, 'guard_name' => 'web']);
-
-        $read_product = Permission::create(['name' => 'read-product' ,'modul_id' => $product->id, 'guard_name' => 'web']);
-        $create_product = Permission::create(['name' => 'create-product' ,'modul_id' => $product->id, 'guard_name' => 'web']);
-        $update_product = Permission::create(['name' => 'update-product' ,'modul_id' => $product->id, 'guard_name' => 'web']);
-        $delete_product = Permission::create(['name' => 'delete-product' ,'modul_id' => $product->id, 'guard_name' => 'web']);
-
-        // ModulPermission::create(['modul_id' => $role->id, 'permission_id' => $read_role->id]);
-        // ModulPermission::create(['modul_id' => $role->id, 'permission_id' => $create_role->id]);
-        // ModulPermission::create(['modul_id' => $role->id, 'permission_id' => $update_role->id]);
-        // ModulPermission::create(['modul_id' => $role->id, 'permission_id' => $delete_role->id]);
-
-        // ModulPermission::create(['modul_id' => $permission->id, 'permission_id' => $read_permission->id]);
-        // ModulPermission::create(['modul_id' => $permission->id, 'permission_id' => $create_permission->id]);
-        // ModulPermission::create(['modul_id' => $permission->id, 'permission_id' => $update_permission->id]);
-        // ModulPermission::create(['modul_id' => $permission->id, 'permission_id' => $delete_permission->id]);
-
-        // ModulPermission::create(['modul_id' => $user->id, 'permission_id' => $read_user->id]);
-        // ModulPermission::create(['modul_id' => $user->id, 'permission_id' => $create_user->id]);
-        // ModulPermission::create(['modul_id' => $user->id, 'permission_id' => $update_user->id]);
-        // ModulPermission::create(['modul_id' => $user->id, 'permission_id' => $delete_user->id]);
-
-        // ModulPermission::create(['modul_id' => $brand->id, 'permission_id' => $read_brand->id]);
-        // ModulPermission::create(['modul_id' => $brand->id, 'permission_id' => $create_brand->id]);
-        // ModulPermission::create(['modul_id' => $brand->id, 'permission_id' => $update_brand->id]);
-        // ModulPermission::create(['modul_id' => $brand->id, 'permission_id' => $delete_brand->id]);
-
-        // ModulPermission::create(['modul_id' => $category->id, 'permission_id' => $read_category->id]);
-        // ModulPermission::create(['modul_id' => $category->id, 'permission_id' => $create_category->id]);
-        // ModulPermission::create(['modul_id' => $category->id, 'permission_id' => $update_category->id]);
-        // ModulPermission::create(['modul_id' => $category->id, 'permission_id' => $delete_category->id]);
-
-        // ModulPermission::create(['modul_id' => $product->id, 'permission_id' => $read_product->id]);
-        // ModulPermission::create(['modul_id' => $product->id, 'permission_id' => $create_product->id]);
-        // ModulPermission::create(['modul_id' => $product->id, 'permission_id' => $update_product->id]);
-        // ModulPermission::create(['modul_id' => $product->id, 'permission_id' => $delete_product->id]);
     }
 }

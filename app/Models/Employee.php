@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Product extends Model
+class Employee extends Model
 {
     use HasFactory;
 
-    protected $table = "product";
+    protected $table = "employees";
 
-    protected $fillable = ['id', 'category_id', 'brand_id', 'product_code', 'product_name', 'stock', 'price', 'description'];
+    protected $fillable = ['id', 'company_id', 'division_id', 'position_id', 'employee_code', 'employee_name', 'email', 'phone_number', 'entry_date', 'address'];
 
     protected $primaryKey = 'id';
 
@@ -30,17 +30,19 @@ class Product extends Model
         });
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
+    public function division(){
+        return $this->belongsTo(Division::class);
     }
 
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
+    public function position(){
+        return $this->belongsTo(Position::class);
+    }
+
+    public function company(){
+        return $this->belongsTo(Company::class);
     }
 
     public function asset(){
-        return $this->hasMany(ProductAsset::class);
+        return $this->hasMany(EmployeeAsset::class);
     }
 }

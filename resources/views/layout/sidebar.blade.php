@@ -2,8 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('lte/dist/img/AdminLTELogo.png')}} alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <h2 class="brand-text font-weight-light text-center">TRANSISI</h2>
     </a>
 
     <!-- Sidebar -->
@@ -69,26 +68,35 @@
           </li>
           <li class="nav-header">MASTER DATA</li>
           <li class="nav-item">
-            <a href="/categories" class="nav-link">
-              <i class="nav-icon fas fa-money-check"></i>
+            <a href="/divisions" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
               <p>
-                Category
+                Division
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/brands" class="nav-link">
+            <a href="/positions" class="nav-link">
               <i class="nav-icon fas fa-business-time"></i>
               <p>
-                Brand
+                Position
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/products" class="nav-link">
-              <i class="nav-icon fas fa-cart-plus"></i>
+            <a href="/companies" class="nav-link">
+              <i class="nav-icon fas fa-globe"></i>
               <p>
-                Product
+                Company
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/employees" class="nav-link">
+              <i class="nav-icon fas fa-link"></i>
+              <p>
+                Employee
               </p>
             </a>
           </li>
