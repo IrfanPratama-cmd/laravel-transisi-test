@@ -62,7 +62,7 @@
             <label for="logo" class="form-label">Company Logo</label>
             <input type="hidden" name="oldImage" value="{{ $asset->file_name }}">
             @if ($asset->file_name)
-              <img src="{{ url('company/' . $asset->file_name) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block ">
+              <img src="{{ url('public/company/' . $asset->file_name) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block ">
             @else
               <img class="img-preview img-fluid mb-3 col-sm-5">
             @endif
