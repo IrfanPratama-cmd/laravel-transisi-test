@@ -19,7 +19,7 @@ class UserRoleSeeder extends Seeder
         $default_user_value = [
             'email_verified_at' => now(),
             'is_email_verified' => 1,
-            'password' => bcrypt('password'),
+            'password' => bcrypt('transisi'),
             'remember_token' => Str::random(10)
         ];
 
